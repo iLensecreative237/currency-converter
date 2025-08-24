@@ -12,7 +12,7 @@ export default function HomePage() {
          {/* logo image */}
         <h2 className="text-xl font-bold text-green-700">
           <img
-            src={logoImage} // ✅ Correct usage
+            src={logoImage} 
             alt="User"
             className="h-10 sm:h-24 md:h-20 mx-auto hover:scale-110 transition-transform duration-300 ease-in-out"
           />
