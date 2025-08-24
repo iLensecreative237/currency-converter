@@ -47,6 +47,31 @@ Find the link to my design here https://www.figma.com/proto/ZNWP524pXJ3zPETiwxw0
 - Set up Tailwind CSS
    Follow official Tailwind + Vite setup: https://tailwindcss.com/docs/guides/vite
 
+   # Capstone Part 4: Continue Building
+What I Managed to Build and Add
+- App Routing Setup:
+    1 Converted the original App.jsx into a routing system using react-router-dom.
+    2 Created separate pages: HomePage, ConverterPage(My previous App.jsx page), Place holder pages for (SendPage, ChartPage, and SettingPage) because i will not be building these pages for the capstone
+    3 Created other components like CurrencySelector.jsx, Amountinput.jsx,ConversionResult.jsx.
+    4 Configured navigation so each feature has its own route.
+
+- ConverterPage (Main Feature):
+   Moved all currency converter logic from App.jsx into a new ConverterPage.jsx.
+   Added currency selection dropdowns with emoji flags for better UI clarity.
+   Implemented amount input and real-time conversion using the ExchangeRate API.
+   Added swap button (⟳) to easily switch “From” and “To” currencies.
+   Displayed conversion results with exchange rate details.
+
+
+- UI Enhancements (Based on Figma):
+   Sidebar with profile image (fixed import issues with ../assets/...).
+   Top bar with client initials, name, and notification bell.
+   Styled converter box and selectors with Tailwind CSS (responsive + hover effects).
+   Added extra action cards (“Start Sending with iLense” + “Set a rate alert”).
+
+
+
+
 
 ## Expanding the ESLint configuration
 

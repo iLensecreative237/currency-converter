@@ -1,65 +1,27 @@
-import { useEffect, useState } from "react";
-import CurrencySelector from "./components/CurrencySelector";
-import AmountInput from "./components/AmountInput";
-import ConversionResult from "./components/ConversionResult";
-
-const API_KEY = "72e28d7d61d9e121b920dca4"; // My API key
-const API_URL = `https://v6.exchangerate-api.com/v6/72e28d7d61d9e121b920dca4/latest/USD`;
+// src/App.jsx
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import ConverterPage from "./components/ConverterPage";
+import SendPage from "./components/SendPage";
+import ChartPage from "./components/ChartPage";
+import SettingPage from "./components/SettingPage";
 
 function App() {
-  const [currencies, setCurrencies] = useState([]);
-  const [fromCurrency, setFromCurrency] = useState("USD");
-  const [toCurrency, setToCurrency] = useState("EUR");
-  const [amount, setAmount] = useState(1);
-  const [result, setResult] = useState(null);
-  const [exchangeRates, setExchangeRates] = useState({});
-
-  useEffect(() => {
-    fetch(`${API_URL}/${fromCurrency}`)
-      .then(res => res.json())
-      .then(data => {
-        setExchangeRates(data.conversion_rates);
-        setCurrencies(Object.keys(data.conversion_rates));
-      });
-  }, [fromCurrency]);
-
-  useEffect(() => {
-    if (exchangeRates[toCurrency]) {
-      setResult((amount * exchangeRates[toCurrency]).toFixed(2));
-    }
-  }, [amount, toCurrency, exchangeRates]);
-
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-10">
-      <h1 className="text-3xl font-bold mb-8">💱 Currency Converter</h1>
+    <Router>
+      <Routes>
+        {/* Landing Page */}
+        <Route path="/" element={<HomePage />} />
 
-      <div className="bg-white shadow-md rounded-xl p-6 w-full max-w-lg">
-        <div className="flex flex-col gap-4">
-          <AmountInput amount={amount} setAmount={setAmount} />
+        {/* Converter */}
+        <Route path="/converter" element={<ConverterPage />} />
 
-          <div className="flex gap-4">
-            <CurrencySelector 
-              currencies={currencies} 
-              selectedCurrency={fromCurrency} 
-              setSelectedCurrency={setFromCurrency} 
-            />
-            <span className="text-2xl">➡️</span>
-            <CurrencySelector 
-              currencies={currencies} 
-              selectedCurrency={toCurrency} 
-              setSelectedCurrency={setToCurrency} 
-            />
-          </div>
-
-          <ConversionResult 
-            amount={amount} 
-            from={fromCurrency} 
-            to={toCurrency} 
-            result={result} 
-          />
-        </div>
-      </div>
-    </div>
+        {/* Placeholder Pages */}
+        <Route path="/send" element={<SendPage />} />
+        <Route path="/chart" element={<ChartPage />} />
+        <Route path="/setting" element={<SettingPage />} />
+      </Routes>
+    </Router>
   );
 }
 
