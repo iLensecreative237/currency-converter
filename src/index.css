@@ -2,3 +2,16 @@
 @tailwind components;
 @tailwind utilities; */
 @import "tailwindcss";
+
+:root {
+  /* Brand (Primary) */
+  --color-brand-light: #f3e8ff;
+  --color-brand: #990099;
+  --color-brand-dark: #4c1d95;
+
+  /* Accent (Secondary) */
+  --color-accent-light: #d1fae5;
+  --color-accent: #28a745;
+  --color-accent-dark: #065f46;
+}
+

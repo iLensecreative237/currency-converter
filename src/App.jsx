@@ -5,13 +5,17 @@ import ConverterPage from "./components/ConverterPage";
 import SendPage from "./components/SendPage";
 import ChartPage from "./components/ChartPage";
 import SettingPage from "./components/SettingPage";
+import SignupPage from "./components/SignupPage";
 
 function App() {
   return (
     <Router>
       <Routes>
+         {/* SignUp Page */}
+        <Route path="/" element={<SignupPage />} />
+
         {/* Landing Page */}
-        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
 
         {/* Converter */}
         <Route path="/converter" element={<ConverterPage />} />

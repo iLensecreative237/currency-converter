@@ -1,4 +1,5 @@
 // src/components/ConverterPage.jsx
+import { Link } from "react-router-dom"; 
 import { useEffect, useState } from "react";
 import CurrencySelector from "./CurrencySelector";
 import AmountInput from "./AmountInput";
@@ -40,7 +41,7 @@ function ConverterPage() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Sidebar */}
-      <aside className="w-48 bg-white shadow-md p-4 flex flex-col gap-6">
+      <aside className="w-48 bg-green text-white shadow-md p-4 flex flex-col gap-6">
         {/* logo image */}
         <h2 className="text-xl font-bold text-green-700">
           <img
@@ -50,21 +51,21 @@ function ConverterPage() {
           />
         </h2>
         <nav className="flex flex-col gap-3 text-gray-700 font-medium">
-          <button className="text-left px-3 py-2 rounded-md hover:bg-green-100">
+          <Link className="text-left px-3 py-2 rounded-md hover:bg-green-100">
             Home
-          </button>
-          <button className="text-left px-3 py-2 rounded-md bg-green-600 text-white">
+          </Link>
+          <Link className="text-left px-3 py-2 rounded-md bg-green-600 text-white">
             Converter
-          </button>
-          <button className="text-left px-3 py-2 rounded-md hover:bg-green-100">
+          </Link>
+          <Link className="text-left px-3 py-2 rounded-md hover:bg-green-100">
             Send
-          </button>
-          <button className="text-left px-3 py-2 rounded-md hover:bg-green-100">
+          </Link>
+          <Link className="text-left px-3 py-2 rounded-md hover:bg-green-100">
             Chart
-          </button>
-          <button className="text-left px-3 py-2 rounded-md hover:bg-green-100">
+          </Link>
+          <Link className="text-left px-3 py-2 rounded-md hover:bg-green-100">
             Setting
-          </button>
+          </Link>
         </nav>
       </aside>
 
@@ -82,10 +83,10 @@ function ConverterPage() {
                 <img src={image} alt="" className="rounded-full" /> 
               </div>
               <span className="text-gray-700 font-medium">Client Name</span>
-              <button className="relative">
+              <Link className="relative">
                 <span className="absolute top-0 right-0 w-2 h-2 bg-green-500 rounded-full"></span>
                 🔔
-              </button>
+              </Link>
             </div>
           </section>
         </header>
