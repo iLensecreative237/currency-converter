@@ -8,14 +8,9 @@ export default {
     extend: {
       colors: {
         brand: {
-          light: "var(--color-brand-light)",
-          DEFAULT: "var(--color-brand)",
-          dark: "var(--color-brand-dark)",
-        },
-        accent: {
-          light: "var(--color-accent-light)",
-          DEFAULT: "var(--color-accent)",
-          dark: "var(--color-accent-dark)",
+          light: "#cc33cc",   // lighter shade
+          DEFAULT: "#990099", // main brand purple
+          dark: "#660066",    // darker shade
         },
       },
     },

@@ -1,14 +1,12 @@
 // src/components/ConverterPage.jsx
-import { Link } from "react-router-dom"; 
+import Sidebar from "./Sidebar"; // ✅ Import Sidebar
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import CurrencySelector from "./CurrencySelector";
 import AmountInput from "./AmountInput";
 import ConversionResult from "./ConversionResult";
 
-// ✅ Import logo image 
-import logoImage from "../assets/logo-image.png";
-// ✅ Import profile image
-import image from "../assets/profilepic.jpg"; 
+import image from "../assets/profilepic.jpg";
 
 const API_KEY = "72e28d7d61d9e121b920dca4";
 const API_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}/latest`;
@@ -21,7 +19,6 @@ function ConverterPage() {
   const [result, setResult] = useState(null);
   const [exchangeRates, setExchangeRates] = useState({});
 
-  // Fetch exchange rates
   useEffect(() => {
     fetch(`${API_URL}/${fromCurrency}`)
       .then((res) => res.json())
@@ -31,7 +28,6 @@ function ConverterPage() {
       });
   }, [fromCurrency]);
 
-  // Calculate conversion
   useEffect(() => {
     if (exchangeRates[toCurrency]) {
       setResult((amount * exchangeRates[toCurrency]).toFixed(2));
@@ -40,34 +36,8 @@ function ConverterPage() {
 
   return (
     <div className="flex min-h-screen bg-gray-50">
-      {/* Sidebar */}
-      <aside className="w-48 bg-green text-white shadow-md p-4 flex flex-col gap-6">
-        {/* logo image */}
-        <h2 className="text-xl font-bold text-green-700">
-          <img
-            src={logoImage}
-            alt="User"
-            className="h-10 sm:h-24 md:h-20 mx-auto hover:scale-110 transition-transform duration-300 ease-in-out"
-          />
-        </h2>
-        <nav className="flex flex-col gap-3 text-gray-700 font-medium">
-          <Link className="text-left px-3 py-2 rounded-md hover:bg-green-100">
-            Home
-          </Link>
-          <Link className="text-left px-3 py-2 rounded-md bg-green-600 text-white">
-            Converter
-          </Link>
-          <Link className="text-left px-3 py-2 rounded-md hover:bg-green-100">
-            Send
-          </Link>
-          <Link className="text-left px-3 py-2 rounded-md hover:bg-green-100">
-            Chart
-          </Link>
-          <Link className="text-left px-3 py-2 rounded-md hover:bg-green-100">
-            Setting
-          </Link>
-        </nav>
-      </aside>
+      {/* ✅ Sidebar reused */}
+      <Sidebar />
 
       {/* Main Content */}
       <main className="flex-1 p-8">
@@ -79,11 +49,10 @@ function ConverterPage() {
             </h1>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-yellow-300 flex items-center justify-center font-bold">
-                {/* here we just pass the image structure that has been imported abv  */}
-                <img src={image} alt="" className="rounded-full" /> 
+                <img src={image} alt="" className="rounded-full" />
               </div>
               <span className="text-gray-700 font-medium">Client Name</span>
-              <Link className="relative">
+              <Link to="/setting" className="relative">
                 <span className="absolute top-0 right-0 w-2 h-2 bg-green-500 rounded-full"></span>
                 🔔
               </Link>
